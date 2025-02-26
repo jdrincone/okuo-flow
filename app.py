@@ -6,7 +6,7 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 from PIL import Image
-
+import base64
 # === APLICAR FUENTE BARLOW SEMIBOLD ===
 st.markdown("""
     <style>
@@ -28,44 +28,136 @@ durabilidad_pellet_path = os.path.join(base_img_path, 'durabilidad_pellet.png')
 engrase_zaranda_path = os.path.join(base_img_path, 'engrase_zaranda.png')
 
 # Mostrar imágenes
-st.sidebar.image(logo_path, width=150)
 imagen = Image.open(logo_ppal_path)
 st.image(imagen, use_container_width=True)
 
+
+
+# Imagen en el sidebar
+st.sidebar.markdown(
+    f"""
+    <div style='text-align: center;'>
+        <img src="data:image/png;base64,{base64.b64encode(open(logo_path, "rb").read()).decode()}" width="150">
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+
 @st.cache_data
-def cargar_datos(carpeta="data"):
-    dataframes = pd.read_csv("data/data.csv")
+def cargar_datos(file_name):
+    dataframes = pd.read_csv(f"data/{file_name}.csv")
     return dataframes
 
-st.markdown("""
-    <h1 style='text-align: center; color: #1f8175;'>Análisis Estadístico</h1>
+
+st.sidebar.markdown("""
+    <h2 style='text-align: center; color: #94AF92;'>Granja de Barlovento - Aliar</h2>
 """, unsafe_allow_html=True)
 
 st.markdown("""
-### Informe estadístico asociado a medidas de granularidad en molienda y durabilidad en pellets:
-- Conteos de registros en cada proceso de medición.
-- Revisión del comportamiento de estimadores de centralidad por producto realizado.
-- Verificación de pruebas de hipótesis.
+    <h2 style='text-align: center; color: #1f8175;'>Análisis Estadístico sobre Granularidad
+  en Molienda y Durabilidad en Pellet</h2>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+---
+
+Este informe presenta un análisis estadístico detallado sobre las medidas de **granularidad en molienda** y **durabilidad en pellet** recopiladas en la **Granja de Barlovento** en **Aliar**. Se han considerado diversos procesos de medición para proporcionar una visión integral del desempeño en la producción. A continuación, se detallan los aspectos analizados:
+- Conteo de Registros en los Procesos de Medición.
+- Estadísticas Descriptivas para Medidas en Molienda tomadas en la tolva, desglosadas por cada producto elaborado durante el proceso.
+- Estimadores de Tendencias Centrales en Granularidad.
+- Estadísticas Descriptivas para Dureza y Durabilidad del Pellet categorizadas por:
+   **Orden de producto**, **Producto** y **Punto de medida**.
+---
 """)
 
-df_filter = cargar_datos()
-st.subheader("Data Raw")
+df_filter = cargar_datos(file_name="data")
+st.markdown("""
+    <h3 style='text-align: center;'>Data Original </h3>
+""", unsafe_allow_html=True)
 st.dataframe(df_filter.head())
 
+st.markdown("""
+    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <h3 style='text-align: center;'>Diagramación de los datos y conteo en cada los puntos de medición</h3>
+""", unsafe_allow_html=True)
 ruta_svg = os.path.join(base_img_path, "data.svg")
 with open(ruta_svg, "r") as archivo:
     svg_contenido = archivo.read()
 st.markdown(f"""<div style="text-align: center;">{svg_contenido}</div>""", unsafe_allow_html=True)
 
-st.markdown("""
-    <h1 style='text-align: center; color: #1f8175;'>Medidas en Molienda: estadísticos asociados a la Granulometría por Producto</h1>
-""", unsafe_allow_html=True)
-st.image(violin_plots_path, caption="Gráficos de Violin de Granulometría", use_container_width=True)
 
 st.markdown("""
-    <h3 style='text-align: center; color: #94af92;'>¿La eficiencia del Pellet depende del producto?</h3>
+    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de granularidad en molienda </h3>
+""", unsafe_allow_html=True)
+
+grad = cargar_datos(file_name="estadisticos_granulometria")
+st.markdown("""
+    <style>
+    .dataframe-container {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    <div class='dataframe-container'>
+    """, unsafe_allow_html=True)
+st.dataframe(grad)
+st.markdown("""</div>""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style='text-align: center;'>Estimadores de Tendencias Centrales en medidas de Granularidad</h3>
+""", unsafe_allow_html=True)
+
+st.markdown("""Para comparar las granulometrías de diferentes productos, se utiliza la prueba de Mann-Whitney U,
+             que evalúa si existen diferencias significativas en la distribución de las granulometrías entre los grupos comparados.
+            En cada etapa de medición, el p value, p ≥ 0.05 implica que:
+            No hay evidencia suficiente para afirmar que las granulometrías sean diferentes entre los productos.
+            En este caso, **el producto no es un factor significativo para clasificar la granulometría en esa etapa de medición**.
+            """)
+st.image(violin_plots_path, caption="Gráficos de Violin de Granulometría", use_container_width=True)
+
+
+st.markdown("""
+    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza y durabilidad en pellet</h3>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    .dataframe-container {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    <div class='dataframe-container'>
+    """, unsafe_allow_html=True)
+grad = cargar_datos(file_name="estadisticos_durabilidad")
+st.dataframe(grad)
+st.markdown("""</div>""", unsafe_allow_html=True)
+
+
+
+st.markdown("""
+    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style='text-align: center;'>Estimadores de Tendencias Centrales de la dureza y durabilidad </h3>
 """, unsafe_allow_html=True)
 st.image(durabilidad_pellet_path, caption="Gráficos de Violin en la durabilidad del Pellet", use_container_width=True)
+
+
 
 st.markdown("""
     <h3 style='text-align: center; color: #94af92;'>¿Afecta el pos engrase las medidas de dureza y durabilidad en el pellet?</h3>

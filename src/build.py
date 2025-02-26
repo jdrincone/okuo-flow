@@ -43,7 +43,23 @@ def clear_data():
     df_filter['Producto'] = df_filter['Producto'].str.replace(r'(?i).*FIN.*', 'FINALIZADOR', regex=True)
     df_filter['Producto'] = df_filter['Producto'].str.replace(r'(?i).*LEV.*', 'LEVANTE', regex=True)
     df_filter['Producto'] = df_filter['Producto'].str.replace(r'(?i).*ENG.*', 'ENGORDE', regex=True)
+
+    
+    cond_molienda = df_filter["Muestra"] == "MOLIENDA"
+    df_filter.loc[cond_molienda, "Punto"] = "TOLVA"
+
+    cond_pellet = df_filter["Muestra"] == "PELLET"
+    cond_tolva= df_filter["Punto"] == "TOLVA"
+    df_filter.loc[cond_pellet & cond_tolva, "Punto"] = "ZARANDA 1"
+
+
+    df_filter["Granulometría 12"] = pd.to_numeric(df_filter["Granulometría 12"], errors="coerce")
+    df_filter['Granulometría 16'] = pd.to_numeric(df_filter['Granulometría 16'], errors='coerce')
+    df_filter['Granulometría 14'] = pd.to_numeric(df_filter['Granulometría 14'], errors='coerce')
+    df_filter['Granulometría Pan'] = pd.to_numeric(df_filter['Granulometría Pan'], errors='coerce')
+    
     df_filter.to_csv("../data/data.csv", index=False)
+    print("Actualización Finalizada")
 
 
 if __name__ == "__main__":
