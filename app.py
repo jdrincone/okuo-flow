@@ -67,6 +67,7 @@ Este informe presenta un análisis estadístico detallado sobre las medidas de *
 - Estimadores de Tendencias Centrales en Granularidad.
 - Estadísticas Descriptivas para Dureza y Durabilidad del Pellet categorizadas por:
    **Orden de producto**, **Producto** y **Punto de medida**.
+- Estadísticas Descriptivas en la temperatura por formulación.
 ---
 """)
 
@@ -158,8 +159,30 @@ st.markdown("""
 st.image(durabilidad_pellet_path, caption="Gráficos de Violin en la durabilidad del Pellet", use_container_width=True)
 
 
+st.markdown("""Las colas largar observadas en las distribucciones en el porcentaje de la durabilidad se origina
+            en las fechas del **13 y 14 de Dicciembre del 2024**""")
 
 st.markdown("""
-    <h3 style='text-align: center; color: #94af92;'>¿Afecta el pos engrase las medidas de dureza y durabilidad en el pellet?</h3>
+    <h3 style='text-align: center;'>¿Afecta el pos engrase las medidas de dureza y durabilidad en el pellet?</h3>
 """, unsafe_allow_html=True)
 st.image(engrase_zaranda_path, caption="Gráficos de Violin en la durabilidad del Pellet", use_container_width=True)
+
+st.markdown("""Existe diferencia significativa a nivel estadístico que nos indica que el Pos-engrase en las
+            medidas de porcentaje de durabilidad afectan el pellet, sin embargo, en medidas de dureza no se
+            observa variación significativa.""")
+st.markdown("""
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de temperatura por formula en la peletizadora</h3>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    .dataframe-container {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    <div class='dataframe-container'>
+    """, unsafe_allow_html=True)
+grad = cargar_datos(file_name="estadisticos_temp")
+st.dataframe(grad)
+st.markdown("""</div>""", unsafe_allow_html=True)
