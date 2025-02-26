@@ -2,12 +2,9 @@ import streamlit as st
 st.set_page_config(page_title="Análisis Estadístico", layout="wide")
 
 import pandas as pd
-import numpy as np
 import os
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy import stats
-from scipy.stats import shapiro, mannwhitneyu
 from PIL import Image
 
 # === APLICAR FUENTE BARLOW SEMIBOLD ===
