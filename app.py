@@ -93,10 +93,14 @@ with open(ruta_svg, "r") as archivo:
     svg_contenido = archivo.read()
 st.markdown(f"""<div style="text-align: center;">{svg_contenido}</div>""", unsafe_allow_html=True)
 
-
 st.markdown("""
     <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
 """, unsafe_allow_html=True)
+
+st.markdown("""
+    <h2 style='text-align: center; color: #1f8175;'>Medidas en Molienda</h2>
+""", unsafe_allow_html=True)
+
 st.markdown("""
     <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de Granulometría en molienda agrupados por dieta </h3>
 """, unsafe_allow_html=True)
@@ -124,7 +128,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.markdown("""
     <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de Granulometría en molienda
-             agrupados por recategorizacón en la dieta </h3>
+             agrupados por recategorización en la dieta </h3>
 """, unsafe_allow_html=True)
 
 grad = cargar_datos(file_name="estadisticos_granulometria_producto")
@@ -159,6 +163,11 @@ st.image(violin_plots_path, caption="Gráficos de Violin de Granulometría", use
 
 st.markdown("""
     <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <h2 style='text-align: center; color: #1f8175;'>Medidas en Pellet</h2>
 """, unsafe_allow_html=True)
 st.markdown("""
     <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza y durabilidad en pellet por dieta</h3>
