@@ -24,7 +24,7 @@ base_img_path = "images"
 logo_path = os.path.join(base_img_path, 'logo.png')
 logo_ppal_path = os.path.join(base_img_path, 'logo_ppal.jpg')
 violin_plots_path = os.path.join(base_img_path, 'granulometria_violin_plots.png')
-durabilidad_pellet_path = os.path.join(base_img_path, 'durabilidad_pellet.png')
+durabilidad_pellet_path = os.path.join(base_img_path, 'distrubucion_durabilidad_formula.png')
 engrase_zaranda_path = os.path.join(base_img_path, 'engrase_zaranda.png')
 
 # Mostrar imágenes
@@ -85,7 +85,7 @@ st.markdown("""
 st.markdown("""
     <h3 style='text-align: center;'>Diagramación de los datos y conteo en cada los puntos de medición</h3>
 """, unsafe_allow_html=True)
-ruta_svg = os.path.join(base_img_path, "data.svg")
+ruta_svg = os.path.join(base_img_path, "diagrama.svg")
 with open(ruta_svg, "r") as archivo:
     svg_contenido = archivo.read()
 st.markdown(f"""<div style="text-align: center;">{svg_contenido}</div>""", unsafe_allow_html=True)
@@ -95,7 +95,32 @@ st.markdown("""
     <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
 """, unsafe_allow_html=True)
 st.markdown("""
-    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de granularidad en molienda </h3>
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de granularidad en molienda agrupados por formulación </h3>
+""", unsafe_allow_html=True)
+
+grad = cargar_datos(file_name="estadisticos_granulometria_formula")
+st.markdown("""
+    <style>
+    .dataframe-container {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    <div class='dataframe-container'>
+    """, unsafe_allow_html=True)
+st.dataframe(grad)
+st.markdown("""</div>""", unsafe_allow_html=True)
+
+st.markdown("""Los estadísticos para formulaciones con menos de 5 medidas carecen de interpretabilidad, es 
+            por esto que se realiza la siguiente recategorización de la formulación en productos. """)
+
+
+
+st.markdown("""
+    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+""", unsafe_allow_html=True)
+st.markdown("""
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de granularidad en molienda agrupados por producto </h3>
 """, unsafe_allow_html=True)
 
 grad = cargar_datos(file_name="estadisticos_granulometria")
@@ -132,9 +157,12 @@ st.markdown("""
     <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
 """, unsafe_allow_html=True)
 st.markdown("""
-    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza y durabilidad en pellet</h3>
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza y durabilidad en pellet por formulación</h3>
 """, unsafe_allow_html=True)
 
+
+
+grad = cargar_datos(file_name="estadisticos_durabilidad_formula")
 st.markdown("""
     <style>
     .dataframe-container {
@@ -144,7 +172,6 @@ st.markdown("""
     </style>
     <div class='dataframe-container'>
     """, unsafe_allow_html=True)
-grad = cargar_datos(file_name="estadisticos_durabilidad")
 st.dataframe(grad)
 st.markdown("""</div>""", unsafe_allow_html=True)
 
@@ -186,3 +213,6 @@ st.markdown("""
 grad = cargar_datos(file_name="estadisticos_temp")
 st.dataframe(grad)
 st.markdown("""</div>""", unsafe_allow_html=True)
+st.markdown("""Las formulaciones con igual nombre pero diferente código representan
+            una inconsistencia tabular, es posible que los códigos que poseen menor
+            cantidad de medidas representen un error en la toma de datos.""")
