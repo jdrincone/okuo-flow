@@ -1,0 +1,19 @@
+Tipo medida,Dieta,Media,Cantidad,Mínimo,Quantil25,Mediana,Quantil75,Máximo,Desviacion Estandar,Varianza,Error Estandar
+Porcentaje Durabilidad,C. ENGORDE ESP P.,87.93,12,78.8,81.57,90.3,93.1,94.2,6.05,36.62,1.75
+Porcentaje Durabilidad,C. FINALIZADOR P.,91.76,9,90.4,91.6,91.8,92.4,92.6,0.77,0.59,0.26
+Porcentaje Durabilidad,C. LEVANTE ESP. P,90.14,7,87.2,88.1,90.8,91.3,94.2,2.53,6.4,0.96
+Porcentaje Durabilidad,C. LEVANTE P.,92.08,23,83.2,91.9,92.6,93.4,94.4,2.48,6.16,0.52
+Porcentaje Durabilidad,C. LEVANTE VR P.,90.11,150,76.1,89.0,91.0,92.8,95.9,3.76,14.12,0.31
+Porcentaje Durabilidad,C.ENGORDE ESP VR.,89.25,30,78.0,87.78,89.85,91.18,94.4,3.03,9.15,0.55
+Porcentaje Durabilidad,C.FINALIZADOR VR P.,90.78,8,86.9,90.1,91.15,92.0,93.2,1.98,3.92,0.7
+Porcentaje Durabilidad,FINALIZADOR VR.,90.11,74,72.4,88.52,91.0,92.28,99.8,4.06,16.48,0.47
+Porcentaje Durabilidad,LEVANTE R ESP VR,89.37,73,72.0,88.1,90.6,91.6,98.3,4.33,18.72,0.51
+Dureza,C. ENGORDE ESP P.,2.57,12,2.2,2.42,2.53,2.68,3.1,0.25,0.06,0.07
+Dureza,C. FINALIZADOR P.,2.76,9,2.29,2.76,2.81,2.9,3.16,0.27,0.07,0.09
+Dureza,C. LEVANTE ESP. P,2.36,7,2.12,2.2,2.34,2.45,2.75,0.22,0.05,0.08
+Dureza,C. LEVANTE P.,2.9,23,2.2,2.73,3.0,3.15,3.52,0.37,0.13,0.08
+Dureza,C. LEVANTE VR P.,2.89,150,1.65,2.5,2.99,3.13,5.4,0.53,0.28,0.04
+Dureza,C.ENGORDE ESP VR.,2.7,30,2.01,2.45,2.82,3.0,3.4,0.38,0.14,0.07
+Dureza,C.FINALIZADOR VR P.,3.6,8,3.1,3.5,3.65,3.72,3.9,0.24,0.06,0.09
+Dureza,FINALIZADOR VR.,2.86,74,2.1,2.55,2.88,3.19,3.96,0.44,0.19,0.05
+Dureza,LEVANTE R ESP VR,2.87,73,1.6,2.6,3.0,3.2,3.8,0.44,0.2,0.05
