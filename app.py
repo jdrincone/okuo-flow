@@ -24,6 +24,10 @@ base_img_path = "images"
 logo_path = os.path.join(base_img_path, 'logo.png')
 logo_ppal_path = os.path.join(base_img_path, 'logo_ppal.jpg')
 violin_plots_path = os.path.join(base_img_path, 'granulometria_violin_plots.png')
+dureza_dieta_punto_violin_plots_path = os.path.join(base_img_path, 'dureza_dieta_punto_violin_plots.png')
+durabilidad_dieta_punto_violin_plots_path = os.path.join(base_img_path, 'durabilidad_dieta_punto_violin_plots.png')
+
+
 durabilidad_pellet_path = os.path.join(base_img_path, 'durabilidad_dureza_violin_plots.png') #distrubucion_durabilidad_formula
 engrase_zaranda_path = os.path.join(base_img_path, 'engrase_zaranda.png')
 
@@ -88,7 +92,7 @@ A continuación, se detallan los aspectos analizados:
 st.markdown("""
     <h3 style='text-align: center;'>Diagramación de los datos y conteo en cada los puntos de medición</h3>
 """, unsafe_allow_html=True)
-ruta_svg = os.path.join(base_img_path, "diagrama_2.svg")
+ruta_svg = os.path.join(base_img_path, "diagrama_2 .svg")
 with open(ruta_svg, "r") as archivo:
     svg_contenido = archivo.read()
 st.markdown(f"""<div style="text-align: center;">{svg_contenido}</div>""", unsafe_allow_html=True)
@@ -123,41 +127,41 @@ st.markdown("""Los estadísticos para dietas con menos de 5 medidas carecen de i
 
 
 
+# st.markdown("""
+#     <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+# """, unsafe_allow_html=True)
+# st.markdown("""
+#     <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de Granulometría en molienda
+#              agrupados por recategorización en la dieta </h3>
+# """, unsafe_allow_html=True)
+
+# grad = cargar_datos(file_name="estadisticos_granulometria_producto")
+# st.markdown("""
+#     <style>
+#     .dataframe-container {
+#         display: flex;
+#         justify-content: center;
+#     }
+#     </style>
+#     <div class='dataframe-container'>
+#     """, unsafe_allow_html=True)
+# st.dataframe(grad)
+# st.markdown("""</div>""", unsafe_allow_html=True)
+
+
 st.markdown("""
-    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
+    <h3 style='text-align: center; margin-bottom: 0.2cm;'></h3>
 """, unsafe_allow_html=True)
 st.markdown("""
-    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de Granulometría en molienda
-             agrupados por recategorización en la dieta </h3>
+    <h3 style='text-align: center;'>Resumen gráfico de medidas de Granulometría</h3>
 """, unsafe_allow_html=True)
 
-grad = cargar_datos(file_name="estadisticos_granulometria_producto")
-st.markdown("""
-    <style>
-    .dataframe-container {
-        display: flex;
-        justify-content: center;
-    }
-    </style>
-    <div class='dataframe-container'>
-    """, unsafe_allow_html=True)
-st.dataframe(grad)
-st.markdown("""</div>""", unsafe_allow_html=True)
-
-
-st.markdown("""
-    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
-""", unsafe_allow_html=True)
-st.markdown("""
-    <h3 style='text-align: center;'>Estimadores de Tendencias Centrales en medidas de Granulometría</h3>
-""", unsafe_allow_html=True)
-
-st.markdown("""Para comparar las granulometrías de diferentes productos, se utiliza la prueba de Mann-Whitney U,
-             que evalúa si existen diferencias significativas en la distribución de las granulometrías entre los grupos comparados.
-            En cada etapa de medición, el p value, p ≥ 0.05 implica que:
-            No hay evidencia suficiente para afirmar que las medidas en granulometrías sean diferentes entre dietas.
-            En este caso, **la dieta no es un factor significativo para clasificar la granulometría en esa etapa de medición**.
-            """)
+# st.markdown("""Para comparar las granulometrías de diferentes productos, se utiliza la prueba de Mann-Whitney U,
+#              que evalúa si existen diferencias significativas en la distribución de las granulometrías entre los grupos comparados.
+#             En cada etapa de medición, el p value, p ≥ 0.05 implica que:
+#             No hay evidencia suficiente para afirmar que las medidas en granulometrías sean diferentes entre dietas.
+#             En este caso, **la dieta no es un factor significativo para clasificar la granulometría en esa etapa de medición**.
+#             """)
 st.image(violin_plots_path, caption="Gráficos de Violin de Granulometría", use_container_width=True)
 
 
@@ -170,12 +174,13 @@ st.markdown("""
     <h2 style='text-align: center; color: #1f8175;'>Medidas en Pellet</h2>
 """, unsafe_allow_html=True)
 st.markdown("""
-    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza y durabilidad en pellet por dieta</h3>
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza en pellet por dieta y punto
+            de medida</h3>
 """, unsafe_allow_html=True)
 
 
 
-grad = cargar_datos(file_name="estadisticos_durabilidad_dieta")
+grad = cargar_datos(file_name="estadisticos_dureza_punto_dieta")
 st.markdown("""
     <style>
     .dataframe-container {
@@ -190,17 +195,18 @@ st.markdown("""</div>""", unsafe_allow_html=True)
 
 
 
+st.image(dureza_dieta_punto_violin_plots_path, caption="Gráficos de Violin de Dureza por dieta y punto de medida", use_container_width=True)
 
 
-#
+
 st.markdown("""
-    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza y durabilidad por dieta
-            y orden de producción</h3>
+    <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de durabilidad en pellet por dieta y punto
+            de medida</h3>
 """, unsafe_allow_html=True)
 
 
 
-grad = cargar_datos(file_name="estadisticos_durabilidad_dieta_op")
+grad = cargar_datos(file_name="estadisticos_porc_durabilidad_punto_dieta")
 st.markdown("""
     <style>
     .dataframe-container {
@@ -214,26 +220,9 @@ st.dataframe(grad)
 st.markdown("""</div>""", unsafe_allow_html=True)
 
 
-st.markdown("""
-    <h3 style='text-align: center; margin-bottom: 0.4cm;'></h3>
-""", unsafe_allow_html=True)
-st.markdown("""
-    <h3 style='text-align: center;'>Estimadores de Tendencias Centrales de la dureza y durabilidad </h3>
-""", unsafe_allow_html=True)
-st.image(durabilidad_pellet_path, caption="Gráficos de Violin en la durabilidad del Pellet", use_container_width=True)
 
+st.image(durabilidad_dieta_punto_violin_plots_path, caption="Gráficos de Violin de Durabilidad por dieta y punto de medida", use_container_width=True)
 
-st.markdown("""Las colas largar observadas en las distribucciones en el porcentaje de la durabilidad se origina
-            en las fechas del **13 y 14 de Dicciembre del 2024**""")
-
-st.markdown("""
-    <h3 style='text-align: center;'>¿Afecta el Pos-engrase las medidas de dureza y durabilidad en el pellet?</h3>
-""", unsafe_allow_html=True)
-st.image(engrase_zaranda_path, caption="Gráficos de Violin en la durabilidad del Pellet", use_container_width=True)
-
-st.markdown("""Existe diferencia significativa a nivel estadístico que nos indica que el Pos-engrase en las
-            medidas de porcentaje de durabilidad afectan el pellet, sin embargo, en medidas de dureza no se
-            observa variación significativa.""")
 
 st.markdown("""
     <h3 style='text-align: center;'>Estadísticos asociadas a la temperatura</h3>
@@ -278,25 +267,3 @@ st.markdown("""
 grad = cargar_datos(file_name="estadisticos_temp_dieta")
 st.dataframe(grad)
 st.markdown("""</div>""", unsafe_allow_html=True)
-
-
-st.markdown("""
-    <h4 style='text-align: center;'>Estadísticos descriptivos en medidas de 
-            temperatura por dieta y orden de producción</h4>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-    <style>
-    .dataframe-container {
-        display: flex;
-        justify-content: center;
-    }
-    </style>
-    <div class='dataframe-container'>
-    """, unsafe_allow_html=True)
-grad = cargar_datos(file_name="estadisticos_temp_op")
-st.dataframe(grad)
-st.markdown("""</div>""", unsafe_allow_html=True)
-
-
-
