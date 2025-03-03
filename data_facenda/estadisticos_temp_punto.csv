@@ -1,0 +1,13 @@
+Instrumento,Punto,Media,Cantidad,Mínimo,P25,Mediana,P75,Máximo,Desviación estandar,Varianza,Error estandar
+Termometro planta,ACONDICIONADOR 1,71.39,71,7.0,70.0,72.0,74.5,80.0,8.59,73.76,1.02
+Termometro planta,ACONDICIONADOR 2,67.67,73,6.0,65.0,71.0,73.0,80.0,13.82,190.94,1.62
+Termometro planta,ACONDICIONADOR 3,70.47,71,56.2,69.1,71.2,73.1,77.5,4.04,16.33,0.48
+Termometro industrial,ACONDICIONADOR 1,71.38,71,60.1,69.85,71.8,73.2,78.6,3.72,13.83,0.44
+Termometro industrial,ACONDICIONADOR 2,69.3,73,50.2,67.0,70.5,72.3,83.3,5.35,28.59,0.63
+Termometro industrial,ACONDICIONADOR 3,70.07,71,12.1,69.75,71.1,73.4,77.4,7.95,63.15,0.94
+Termometro industrial,ENFRIADORA 1,31.08,71,26.3,29.7,30.9,32.35,35.6,1.98,3.93,0.24
+Termometro industrial,ENFRIADORA 2,29.92,71,25.3,28.5,29.3,31.55,34.1,2.03,4.1,0.24
+Termometro industrial,ENFRIADORA 3,30.64,70,27.1,28.7,30.4,32.4,36.1,2.29,5.24,0.27
+Termometro industrial,PELLET 1,80.33,71,8.36,80.35,81.4,82.4,85.5,8.95,80.06,1.06
+Termometro industrial,PELLET 2,80.47,72,67.1,80.1,81.0,82.43,86.5,3.68,13.52,0.43
+Termometro industrial,PELLET 3,80.56,72,8.13,80.47,81.6,83.0,86.3,8.94,79.98,1.05

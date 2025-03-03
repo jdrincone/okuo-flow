@@ -65,3 +65,24 @@ def clear_data():
 if __name__ == "__main__":
     clear_data()
 
+
+carpeta = "data"
+
+# Lista para guardar todos los DataFrames leídos
+list_dataframe = []
+
+for archivo in os.listdir(carpeta):
+    if "pellet" in archivo.lower() and archivo.lower().endswith('.xlsx'):
+        ruta_completa = os.path.join(carpeta, archivo)
+        
+        try:
+            # Leer el archivo como CSV con pandas
+            df = pd.read_excel(ruta_completa, skiprows=10)
+            cond = df["Fecha Prod."].notnull()
+            df = df[cond]
+            list_dataframe.append(df)
+            print(f"Leído: {archivo} - Filas: {len(df)}")
+        except Exception as e:
+            print(f"Error leyendo {archivo}: {e}")
+
+dataframes = pd.concat(list_dataframe)
