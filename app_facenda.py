@@ -228,7 +228,8 @@ st.markdown("""</div>""", unsafe_allow_html=True)
 
 
 st.markdown("""
-    <h3 style='text-align: center;'>Comparativa entre dietas por peletizadora con diferencia significativa en la dureza del pellet
+    <h3 style='text-align: center;'>Comparativa entre dietas por peletizadora con diferencia significativa en 
+            la dureza del pellet
 </h3>
 """, unsafe_allow_html=True)
 
@@ -286,7 +287,8 @@ st.markdown("""</div>""", unsafe_allow_html=True)
 
 
 st.markdown("""
-    <h3 style='text-align: center;'>Comparativa entre dietas por peletizadora con diferencia significativa en la dureza del pellet
+    <h3 style='text-align: center;'>Comparativa entre dietas por peletizadora con
+             diferencia significativa en la durabilidad del pellet
 </h3>
 """, unsafe_allow_html=True)
 
