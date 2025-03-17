@@ -175,7 +175,7 @@ st.markdown("""
 
 
 st.markdown("""
-    <h2 style='text-align: center; color: #1f8175;'>Medidas en Pellet</h2>
+    <h2 style='text-align: center; color: #1f8175;'>Medición en Pellet</h2>
 """, unsafe_allow_html=True)
 st.markdown("""
     <h3 style='text-align: center;'>Estadísticos descriptivos en medidas de dureza por Zaranda y dieta
